@@ -17,11 +17,8 @@ $mail->setBody(MAIL_BODY)
     ->setSubject(MAIL_SUBJECT);
     ->to("someone@example.com");
 
-/** @var \EuroMessage\Post\PostHtmlResponse $response */
-$response = $client->sendSingleHtmlMail($postRequest, $mail); // throws \EuroMessage\Exceptions\MailSendException
-
 /** @var \EuroMessage\Post\EmPostResult $result */
-$result = $response->getPostHtmlResult();
+$result = $client->sendSingleHtmlMail($postRequest, $mail); // throws \EuroMessage\Exceptions\MailSendException
 
 ```
 
