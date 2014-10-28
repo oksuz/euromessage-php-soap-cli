@@ -7,7 +7,7 @@ namespace EuroMessage\Auth;
 class Auth extends \SoapClient {
 
   private static $classmap = array(
-        'ELogin' => '\EuroMessage\Auth\Login',
+        'Login' => '\EuroMessage\Auth\Login',
         'LoginResponse' => '\EuroMessage\Auth\LoginResponse',
         'EmAuthResult' => '\EuroMessage\Auth\EmAuthResult',
         'EmResult' => '\EuroMessage\EmResult',
