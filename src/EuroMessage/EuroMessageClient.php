@@ -46,13 +46,11 @@ class EuroMessageClient
         $mail->setToEmailAddress($m->getTo());
         $mail->setHtmlBody($m->getBody());
         $mail->setAttachments($m->getAttachments());
-        $this->_log("New Mail Created", $mail);
 
         /** @var \EuroMessage\Post\PostHtmlResponse $response */
         $response = $mailSender->PostHtml($mail);
 
         if (null === $response->getPostHtmlResult()->getPostID()) {
-            $this->_log("Mail Sending Failed", array($mail));
             throw new \EuroMessage\Exceptions\MailSendException($response->getPostHtmlResult()->getMessage(), $response->getPostHtmlResult()->getCode());
         }
 
@@ -65,12 +63,6 @@ class EuroMessageClient
         $logout->setServiceTicket($req->getServiceTicket());
         $auth = new \EuroMessage\Auth\Auth();
         $logoutResponse = $auth->Logout($logout);
-        $this->_log("EuroMessage Logged Out", $logoutResponse->getLogoutResult());
-    }
-
-    protected function _log($message, $data)
-    {
-        error_log($message . "\n" . print_r($data, true));
     }
 
 }
